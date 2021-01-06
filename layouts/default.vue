@@ -4,8 +4,16 @@
     <div class="hidden">
       <vs-navbar shadow square center-collapsed v-model="active">
         <template #left>
-          <vs-button @click="activeSidebar = !activeSidebar" flat icon>
+          <vs-button
+            v-if="user"
+            @click="activeSidebar = !activeSidebar"
+            flat
+            icon
+          >
             <i class="bx bx-menu"></i>
+          </vs-button>
+          <vs-button v-else @click="signInWithGoogle" flat icon>
+            <i class="bx bx-log-in"></i>Login
           </vs-button>
         </template>
         <vs-navbar-item :active="active == 'vuerds'" id="vuerds">
@@ -26,8 +34,8 @@
       </vs-navbar>
       <vs-sidebar absolute v-model="active" :open.sync="activeSidebar">
         <template #logo>
-          <vs-avatar size="70" badge badge-color="success" style="float: left">
-            <i class="bx bx-user"></i>
+          <vs-avatar  size="30" badge badge-color="success">
+            <img :src="avatar">
           </vs-avatar>
         </template>
         <vs-sidebar-item id="dashboard">
@@ -109,7 +117,7 @@
         </vs-sidebar-item>
         <template #footer>
           <vs-row justify="space-between">
-            <vs-avatar badge-color="danger" badge-position="top-right">
+            <vs-avatar @click="signOut" badge-color="danger" badge-position="top-right">
               <i class="bx bx-log-out"></i>
             </vs-avatar>
           </vs-row>
@@ -127,13 +135,44 @@ export default {
   data: () => ({
     active: "dashboard",
     activeSidebar: false,
+    user: null,
+    avatar: null,
   }),
+  methods: {
+    signOut() {
+      this.$fireModule.auth().signOut()
+      this.user = null
+      this.activeSidebar = false
+    },
+    loadUser() {
+      this.$fireModule.auth().onAuthStateChanged((user) => (this.user = user)).then(() =>
+       this.avatar = this.user.photoURL)
+    },
+    signInWithGoogle() {
+      const provider = new this.$fireModule.auth.GoogleAuthProvider();
+      this.$fireModule
+        .auth()
+        .signInWithPopup(provider)
+        .then((data) => this.user = data.user)
+        .then((data) => this.avatar = this.user.photoURL)
+        .then(() => this.activeSidebar = true)
+
+        
+        
+    },
+  },
+  mounted() {
+    this.loadUser();
+  },
 };
 </script>
   <style>
 #main {
   margin-top: 70px;
   margin-left: 30px;
+}
+vs-navbar {
+  font-family: Poppins, sans-serif;
 }
 </style>
 

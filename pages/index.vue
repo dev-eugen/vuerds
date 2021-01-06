@@ -15,4 +15,7 @@ export default {
 </script>
 
 <style>
+  div{
+    font-family: Poppins,sans-serif;
+  }
 </style>

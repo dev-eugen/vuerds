@@ -10,12 +10,12 @@ import kursor from 'kursor'
             if (percent <= 100) {
               loading.changePercent(`${percent++}%`)
             }
-          }, 1)
+          }, 40)
           setTimeout(() => {
             loading.close()
             clearInterval(interval)
             percent = 0
-          }, 10)
+          }, 2000)
 
 
           new kursor({
