@@ -6,8 +6,8 @@ export const state = () => ({
   
   export const actions = {
     async nuxtServerInit({dispatch}) {
-      await dispatch('users/load');
-      await dispatch('packs/load');
+      await dispatch('user/load');
+     // await dispatch('packs/load');
     }
   };
   

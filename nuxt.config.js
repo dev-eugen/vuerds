@@ -4,7 +4,7 @@ export default {
     link: [
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Poppins'
+        href: 'https://fonts.googleapis.com/css2?family=Manrope'
       },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
@@ -35,7 +35,8 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '@/plugins/vuesax'
+    '@/plugins/vuesax',
+    '@/plugins/vue-particles.js'
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -59,6 +60,7 @@ export default {
         config: {
           apiKey: "AIzaSyAYJFjhtf-KIR9Za2MySfEs4Rp-482Vucw",
           authDomain: "vuerds.firebaseapp.com",
+          databaseURL: "https://vuerds-default-rtdb.firebaseio.com",
           projectId: "vuerds",
           storageBucket: "vuerds.appspot.com",
           messagingSenderId: "140671840163",
@@ -68,9 +70,9 @@ export default {
         onFirebaseHosting: true,
         services: {
           auth: true,
+          storage: true,
           database: true,
           analytics: true,
-          storage: true,
       }
       }
     ]

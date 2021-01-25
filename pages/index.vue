@@ -1,21 +1,20 @@
 <template>
   <div>
-    Lorem inpusm
+    Алая вспышка осветила силуэт зазубре 
   </div>
 </template>
 
 <script>
-import loading from "../mixins/startLoading.js";
 export default {
   data() {
     return {};
   },
-  mixins: [loading],
+  
 };
 </script>
 
 <style>
   div{
-    font-family: Poppins,sans-serif;
+    font-family: Manrope,sans-serif;
   }
 </style>

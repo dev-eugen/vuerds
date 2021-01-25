@@ -1,4 +1,10 @@
 body{
-    font-family: Poppins,sans-serif;
+    font-family: Manrope,sans-serif;
     /*cursor: none;*/
+}
+i{
+    margin-right: 5px;
+}
+div{
+    font-family: Manrope,sans-serif;
 }

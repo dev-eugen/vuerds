@@ -2,20 +2,20 @@
 import kursor from 'kursor'
     export default {
         mounted() {
-            let percent = 0;
-          const loading = this.$vs.loading({
-            percent: percent
-          })
-          const interval = setInterval(() => {
-            if (percent <= 100) {
-              loading.changePercent(`${percent++}%`)
-            }
-          }, 40)
-          setTimeout(() => {
-            loading.close()
-            clearInterval(interval)
-            percent = 0
-          }, 2000)
+          //   let percent = 0;
+          // const loading = this.$vs.loading({
+          //   percent: percent
+          // })
+          // const interval = setInterval(() => {
+          //   if (percent <= 100) {
+          //     loading.changePercent(`${percent++}%`)
+          //   }
+          // }, 15)
+          // setTimeout(() => {
+          //   loading.close()
+          //   clearInterval(interval)
+          //   percent = 0
+          // }, 1000)
 
 
           new kursor({
